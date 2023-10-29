@@ -38,7 +38,18 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+    const arrOfTens = expr.match(/.{1,10}/g);
+    const morseArray = arrOfTens.map((tenDigits) => {
+    let str = tenDigits;
+    if (tenDigits[0] === '0') {
+      str = tenDigits.slice(tenDigits.indexOf('1'));
+    }
+    str = str.replaceAll('10', '.').replaceAll('11', '-');
+    return str;
+  });
+  const result = morseArray
+    .map((elem) => (elem === '**********' ? ' ' : MORSE_TABLE[elem])).join('');
+  return result;
 }
 
 module.exports = {
