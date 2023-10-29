@@ -38,11 +38,11 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    const arrOfTens = expr.match(/.{1,10}/g);
-    const morseArray = arrOfTens.map((tenDigits) => {
-    let str = tenDigits;
-    if (tenDigits[0] === '0') {
-      str = tenDigits.slice(tenDigits.indexOf('1'));
+    const arrTens = expr.match(/.{1,10}/g);
+    const morseArray = arrTens.map((tenNumbers) => {
+    let str = tenNumbers;
+    if (tenNumbers[0] === '0') {
+      str = tenNumbers.slice(tenNumbers.indexOf('1'));
     }
     str = str.replaceAll('10', '.').replaceAll('11', '-');
     return str;
